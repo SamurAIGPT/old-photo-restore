@@ -6,6 +6,7 @@ import { useSession } from "next-auth/react";
 import { LoginButton, SignUpButton, SignOutButton } from "./AuthButtons";
 import { CreditBadge } from "./CreditBadge";
 import { FaCameraRetro, FaMagic } from "react-icons/fa";
+import { SiVercel } from "react-icons/si";
 
 export function Navbar() {
   const { data: session, status } = useSession();
@@ -82,6 +83,16 @@ export function Navbar() {
               <SignUpButton />
             </div>
           )}
+
+          <a 
+            href="https://vercel.com/new/clone?repository-url=https://github.com/SamurAIGPT/old-photo-restore"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden lg:flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 border border-slate-800 text-white hover:bg-slate-800 transition-all font-bold text-[10px] tracking-widest uppercase shadow-lg shadow-slate-900/10"
+          >
+            <SiVercel className="text-xs" />
+            Deploy
+          </a>
         </div>
 
       </div>
