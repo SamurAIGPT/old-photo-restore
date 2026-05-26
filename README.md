@@ -1,12 +1,15 @@
-# 📷 Old Photo Restore — Premium AI Historical Image Restoration Studio
+# 📷 Old Photo Restore — Open-Source AI Photo Restoration SaaS (Free Remini Alternative)
 
-> **A beautifully designed, premium AI photography darkroom for historical image restoration.** Built with Next.js (App Router), this application provides a self-contained SaaS boilerplate for repairing scratches, enhancing facial details, and colorizing black-and-white family archives using the MuAPI AI engine.
+> **Restore, colorize, and repair damaged vintage photographs in seconds.** A production-ready, self-hostable Next.js SaaS boilerplate that turns scratched, faded, black-and-white, or torn family archives into high-definition digital masterpieces. A free open-source alternative to Remini, MyHeritage Deep Nostalgia, and Photomyne — powered by the MuAPI AI engine.
+
+**Tech stack:** Next.js 14 (App Router) · Prisma · PostgreSQL · NextAuth (Google OAuth) · Stripe · Tailwind CSS · MuAPI
+**Use cases:** Family photo restoration · Genealogy research · Black-and-white-to-color colorization · Scratch & tear repair · Historical archive enhancement · Old portrait revival
 
 ## 🌐 Project Repository
 
 **GitHub Repository:** [github.com/SamurAIGPT/old-photo-restore](https://github.com/SamurAIGPT/old-photo-restore)
 
-Experience the professional darkroom design. Sign in with Google to upload damaged photos, select optional restoration instruction prompt tags, check credit pricing, and view generation history.
+Sign in with Google to upload damaged photos, select restoration prompt presets, see real-time before/after comparison, and manage your historical archive.
 
 ---
 
