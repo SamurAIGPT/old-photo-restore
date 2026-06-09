@@ -12,17 +12,15 @@ export const authOptions = {
   ],
   callbacks: {
     async session({ session, user }) {
-      if (session?.user) {
+      if (session.user) {
         session.user.id = user.id;
-        // Fetch credits
-        const dbUser = await prisma.user.findUnique({
-          where: { id: user.id },
-          select: { credits: true },
-        });
-        session.user.credits = dbUser?.credits ?? 0;
+        session.user.credits = user.credits;
       }
       return session;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
+  pages: {
+    signIn: "/login",
+  },
 };

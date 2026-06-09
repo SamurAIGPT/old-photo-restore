@@ -1,7 +1,8 @@
 import { Outfit } from "next/font/google";
 import "./globals.css";
-import { Providers } from "@/components/Providers";
-import { Navbar } from "@/components/saas/Navbar";
+import { Providers } from "./providers";
+import Navbar from "../components/Navbar";
+import config from "@/lib/config";
 
 const font = Outfit({ subsets: ["latin"] });
 
@@ -11,12 +12,14 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const theme = config?.theme || "slate-indigo";
+
   return (
-    <html lang="en" className="h-dvh w-full" style={{ colorScheme: 'light' }}>
-      <body className={`${font.className} h-full w-full flex flex-col antialiased bg-white`}>
+    <html lang="en" className="h-full w-full" data-theme={theme}>
+      <body className={`${font.className} h-full w-full flex flex-col antialiased bg-bg-page text-primary-text overflow-hidden`}>
         <Providers>
           <Navbar />
-          <div className="flex-1 flex flex-col overflow-hidden">
+          <div className="flex-1 flex flex-col overflow-hidden min-h-0">
             {children}
           </div>
         </Providers>
@@ -24,3 +27,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

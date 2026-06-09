@@ -3,6 +3,7 @@
  */
 
 const config = {
+  appName: "Old Photo Restore",
   auth: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
