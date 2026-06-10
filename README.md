@@ -5,6 +5,14 @@
 **Tech stack:** Next.js 14 (App Router) · Prisma · PostgreSQL · NextAuth (Google OAuth) · Stripe · Tailwind CSS · MuAPI
 **Use cases:** Family photo restoration · Genealogy research · Black-and-white-to-color colorization · Scratch & tear repair · Historical archive enhancement · Old portrait revival
 
+<p align="center">
+  <a href="https://github.com/Anil-matcha/awesome-generative-ai-apps">
+    <img src="https://img.shields.io/badge/Part%20of-Awesome%20Generative%20AI%20Apps-FFD700?style=for-the-badge&logo=github&logoColor=black" alt="Awesome Generative AI Apps">
+  </a>
+</p>
+
+> 🎨 **[Explore 50+ more open-source AI apps →](https://github.com/Anil-matcha/awesome-generative-ai-apps)**
+
 ## 🌐 Project Repository
 
 **GitHub Repository:** [github.com/SamurAIGPT/old-photo-restore](https://github.com/SamurAIGPT/old-photo-restore)
