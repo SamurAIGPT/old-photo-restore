@@ -13,6 +13,8 @@
 
 > 🎨 **[Explore 50+ more open-source AI apps →](https://github.com/Anil-matcha/awesome-generative-ai-apps)**
 
+https://github.com/user-attachments/assets/8a60a9f9-649f-4452-ba4e-cd71adf7a774
+
 ## 🌐 Project Repository
 
 **GitHub Repository:** [github.com/SamurAIGPT/old-photo-restore](https://github.com/SamurAIGPT/old-photo-restore)
