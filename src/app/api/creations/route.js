@@ -16,9 +16,12 @@ export async function GET(req) {
     const { searchParams } = new URL(req.url);
     const requestId = searchParams.get("requestId");
 
+    const headerApiKey = req.headers.get("x-custom-api-key");
+    const customApiKey = headerApiKey || session.user.customApiKey || null;
+
     // If requestId is passed, perform status check/polling fallback
     if (requestId) {
-      const statusData = await AIService.checkStatus(requestId, session.user.id);
+      const statusData = await AIService.checkStatus(requestId, session.user.id, customApiKey);
       return NextResponse.json(statusData);
     }
 
@@ -33,7 +36,7 @@ export async function GET(req) {
       restorations.map(async (r) => {
         if (r.status === "processing" && r.requestId) {
           try {
-            await AIService.checkStatus(r.requestId, session.user.id);
+            await AIService.checkStatus(r.requestId, session.user.id, customApiKey);
             const refetched = await prisma.photoRestoration.findUnique({
               where: { id: r.id }
             });
@@ -63,18 +66,25 @@ export async function POST(req) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
 
-    // Check credits
-    const user = await prisma.user.findUnique({
-      where: { id: session.user.id },
-      select: { credits: true }
-    });
+    const body = await req.json();
+    const { inputUrl, prompt, mode } = body;
 
-    const cost = AIService.getCreditCost();
-    if (!user || user.credits < cost) {
-      return new NextResponse(`Insufficient credits. Required: ${cost}`, { status: 400 });
+    const headerApiKey = req.headers.get("x-custom-api-key");
+    const customApiKey = headerApiKey || body.customApiKey || session.user.customApiKey || null;
+    const isUsingCustomKey = Boolean(customApiKey && customApiKey.trim().length > 0);
+
+    // Check credits if not using custom key
+    if (!isUsingCustomKey) {
+      const user = await prisma.user.findUnique({
+        where: { id: session.user.id },
+        select: { credits: true }
+      });
+
+      const cost = AIService.getCreditCost();
+      if (!user || user.credits < cost) {
+        return new NextResponse(`Insufficient credits. Required: ${cost}`, { status: 400 });
+      }
     }
-
-    const { inputUrl, prompt, mode } = await req.json();
 
     if (!inputUrl) {
       return new NextResponse("Missing inputUrl", { status: 400 });
@@ -87,6 +97,7 @@ export async function POST(req) {
       inputUrl,
       prompt,
       mode: mode || "full",
+      customApiKey,
     });
 
     return NextResponse.json(restoration);
